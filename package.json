@@ -1,0 +1,32 @@
+{
+  "name": "ie_verdantu-master",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nishthagakk/IE_VerdantU.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nishthagakk/IE_VerdantU/issues"
+  },
+  "homepage": "https://github.com/nishthagakk/IE_VerdantU#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "hapi": "^18.1.0",
+    "md5": "^2.2.1",
+    "mssql": "^6.2.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.1.0",
+    "node": "^13.12.0",
+    "tedious": "^8.2.0"
+  },
+  "devDependencies": {}
+}
