@@ -58,3 +58,18 @@ var sql = `select EmissionsId, Foods, Emissions from FoodEmissions where Categor
             res.send(JSON.stringify(recordset));
         });
 });
+//API to add the list of food items for which carbon emission and food category will be added
+app.post("/api/addEmission", function(req, res) {
+	console.log("Request structure:", req.body);
+	var insert_sql_data = [];
+	for (var dataVal = 0; dataVal < req.body.length; dataVal++) {
+		     var input_data = [];
+		     input_data.push(req.body[dataVal].UserId, req.body[dataVal].Foods, req.body[dataVal].emission, req.body[dataVal].categoryName, req.body[dataVal].date_of_entry);
+		     insert_sql_data.push(input_data);
+		   }
+	 var sql = "INSERT INTO user_food_consumption (UserId, Foods, emission, categoryName, date_of_entry) VALUES ?";
+	 con.query(sql, [insert_sql_data], function(err, result) {
+	 if (err) throw err;
+	 console.log("Number of records inserted: " + result.affectedRows);
+	 });
+});
