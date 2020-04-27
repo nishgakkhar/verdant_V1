@@ -9,7 +9,7 @@ EmissionsId INT NOT NULL,
 Foods VARCHAR(255) NULL,
 Emissions FLOAT NULL,
 CategoryId INT NULL,
-PRIMARY KEY (EmissionsId)
+PRIMARY KEY (EmissionsId),
 FOREIGN KEY (CategoryId) REFERENCES FoodType(CategoryId)
 );
 
