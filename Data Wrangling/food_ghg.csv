@@ -1,0 +1,83 @@
+﻿Foods,Details of the selected food and source of price data (ordered by increasing price per 100g in each category),Emissions – (kg CO2e/ 100g)*,Price ($) per 100g,SD – Price ($) per 100g,Total wastage % (UK data)**,SD – Total wastage %
+Fruit and vegetables,,,,,,
+Potatoes ,"[Food Price Index (FPI) 2011] uses supermarket and greengrocer (fresh, raw)",0.04,0.17,0.04,45,1.42
+Cabbage ,"[FPI 2011] uses supermarket and greengrocer (fresh, raw)",0.07,0.19,0.08,46,1.98
+Carrots ,"[FPI 2011] uses supermarket and greengrocer (fresh, raw)",0.07,0.22,0.03,46,1.86
+Canned vegetables -tomatoes ,[Countdown – online] ,0.45,0.24,0.01,14,1.18
+Chinese cabbage,"Also called: “bok choy”, “pak choy”. Price based on: our seasonal adjustment of the Countdown online price (and weight data from purchased sample)",0.07,0.25,0.06,46,1.98
+Canned fruit - fruit salad ,Juice included. [Countdown – online] ,0.18,0.26,0.01,16,1.26
+Apples ,"[FPI 2011] uses supermarket and greengrocer (fresh, raw)",0.06,0.26,0.08,46,2.09
+Canned fruit - apricot halves,Juice included. [Countdown – online] ,0.18,0.27,0.01,16,1.26
+Frozen peas,[FPI 2011],0.35,0.29,0.01,14,1.37
+"Kiwifruit, green ",[FPI 2011],0.06,0.34,0.29,40,1.84
+Kumara,[Countdown – online],0.07,0.38,0.08,46,2.09
+Bananas ,[FPI 2011] The edible proportion of the weight = 64% (USDA) ,0.06,0.42,0.07,43,1.39
+Canned fruit - peaches ,[FPI 2011] (juice included),0.19,0.42,0.03,16,1.23
+Oranges ,[FPI 2011] The edible proportion of the weight = 68% (USDA),0.06,0.46,0.03,40,1.67
+Onions ,"[Countdown – online] fresh, raw",0.07,0.46,0.1,46,1.73
+Taro,[Countdown – online] (white),0.07,0.5,0.11,46,2.14
+Lettuce,[FPI 2011],0.07,0.52,0.51,55,2.03
+Sultanas,[FPI 2011],0.18,0.57,0.02,16,1.26
+Broccoli ,"[FPI 2011] fresh, raw",0.07,0.59,0.29,46,2.58
+Tomatoes,[FPI 2011],0.61,0.65,0.56,46,2.09
+Raisins,[Countdown – online] ,0.18,0.79,0.03,16,1.26
+Mushrooms,[FPI 2011],0.95,1.07,0.08,46,2.35
+Cereals and grains,,,,,,
+Flour - white,[FPI 2011],0.13,0.14,0.01,16,1.33
+Flour - wholemeal,Wholemeal [Countdown – Karori] (same as white flour prices in the FPI 2011),0.17,0.14,0.01,16,1.33
+Pasta,Generic brand dry spaghetti [Countdown – online],0.17,0.21,0.01,16,1.47
+Rice,"Long grain, white [FPI 2011]",0.66,0.25,0.01,16,1.33
+Bread - white ,[FPI 2011],0.13,0.29,0.01,36,1.27
+Oats (wholegrain),"Generic brand Quick oats, 100% wholegrain [Countdown – store]",0.17,0.32,0.01,16,1.5
+Semolina,[Countdown – online],0.17,0.38,0.02,25,1.58
+Bread - wholemeal,Branded wholemeal bread [Countdown – online],0.13,0.4,0.02,36,1.7
+Spaghetti (canned),[FPI 2011] ,0.6,0.4,0.02,16,1.26
+Breakfast biscuits - Weetbix,[FPI 2011],0.17,0.55,0.02,16,1.44
+Pop corn,[New World bulk bin],0.17,0.79,0.04,25,1.84
+Wheat germ,[Countdown – online],0.17,0.92,0.04,25,1.84
+Couscous,[New World bulk bin],0.17,0.99,0.05,25,1.84
+"Pulses, seeds and nuts",,,,,,
+Dry peas,Split peas (green) [Countdown – online],0.17,0.34,0.01,14,1.37
+Chickpeas,Canned [Countdown – online],0.17,0.6,0.02,14,1.37
+Canned lentils,"Canned lentils, low-salt (drained weight, Countdown) ",0.45,0.65,0.03,14,1.18
+Lentils (dried),Brown or split red lentils [New World bulk bin],0.17,0.99,0.04,14,1.37
+Peanuts,"Peanuts (raw, blanched) [New World bulk bin]",0.18,1.09,0.05,16,1.47
+Sunflower seeds,Hulled seeds [New World bulk bin],0.18,1.29,0.05,16,1.47
+Fish and meat,,,,,,
+Luncheon sausage,Luncheon sliced pork [Countdown – online],1.1,0.59,0.03,23,1.4
+Sausages,[FPI 2011] mix of meats ,0.87,0.86,0.04,23,1.4
+Beef mince,[FPI 2011],1.66,1.19,0.05,23,1.63
+Sardines,[Countdown] in spring water (with price based on drained weight),0.57,1.22,0.06,23,1.55
+Tuna,"[FPI 2011] (canned, supermarket only) Price based on drained weight for generic brand tuna in spring water ",0.57,1.3,0.09,23,1.55
+"Beef, blade steak",[FPI 2011],1.66,1.42,0.06,23,1.63
+"Lamb, neck chops",[FPI 2011],1.66,1.55,0.11,23,1.63
+Pork mince,[Countdown – online] ,1.66,1.6,0.07,23,1.4
+Canned ham ,[Countdown – online] ,1,1.66,0.08,23,1.52
+Canned sheep meat ,[Countdown – online] ,1,1.67,0.08,23,1.52
+"Pork, loin chops",[FPI 2011],1.66,1.68,0.05,23,1.63
+"Pie, steak",[FPI 2011],0.7,1.96,0.03,35,1.72
+Canned chicken ,[Countdown – online] ,1,2.11,0.12,38,1.95
+"Pork, bacon",[FPI 2011],0.91,2.16,0.06,23,1.4
+"Beef, sirloin steak",[FPI 2011],1.66,2.52,0.13,23,1.63
+Dairy products,,,,,,
+"Milk (whole, homogenized)",[FPI 2011],0.13,0.18,0,7,0.49
+Ice cream,"[Countdown – online] – vanilla, low fat",0.39,0.3,0.01,9,0.95
+Yoghurt,[FPI 2011],0.2,0.6,0.02,9,0.9
+"Butter, salted",[FPI 2011],0.35,0.87,0.05,9,0.95
+Milk powder,Generic brand skim milk powder [Countdown – online],1.3,1,0.04,7,0.77
+Cheese,Mild cheddar [FPI 2011],1.5,1.02,0.06,9,0.87
+Other foods (including foods to improve fit with cultural patterns),,,,,,
+Soft drink,[FPI 2011],0.19,0.16,0.01,9,1.06
+Sugar,White sugar [FPI 2011] ,0.33,0.2,0.01,16,1.3
+"Salt, table",[Countdown online],0.33,0.24,0.01,35,1.92
+"Juice, crisp apple",[FPI 2011],0.19,0.31,0.14,14,1.27
+Coconut cream (lite),[Countdown – online],0.2,0.36,0.02,25,1.58
+Oil (vegetable),Canola or blended vegetable [Countdown – online],0.17,0.47,0.02,17,1.3
+"Sauce, tomato",[FPI 2011],0.61,0.52,0.03,14,1.21
+Eggs ,Medium sized eggs [FPI 2011],0.48,0.54,0.01,9,0.76
+Spreads - Peanut butter,Generic brand peanut butter smooth [Countdown – online],0.18,0.61,0.03,16,1.26
+Margarine,[Countdown – online] Reduced salt version,0.34,0.74,0.03,17,1.3
+Olive oil,[Countdown – online] ,0.2,1.1,0.05,17,1.3
+Potato crisps,[FPI 2011],0.26,1.17,0.19,6,0.73
+"Biscuit, chocolate coated",[FPI 2011],0.23,1.55,0.06,6,0.88
+"Chocolate, dark",[FPI 2011],0.27,1.55,0.04,6,0.83
