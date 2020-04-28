@@ -3,6 +3,7 @@ UserId INT NULL,
 Foods VARCHAR(255) NULL,
 emission FLOAT NULL,
 categoryName VARCHAR(255) NULL,
-date_of_entry TIMESTAMP NOT NULL,
-PRIMARY KEY (date_of_entry)
+date_of_entry TIMESTAMP NULL,
+ObjectID INT NOT NULL AUTO_INCREMENT,
+PRIMARY KEY (ObjectID)
 );
