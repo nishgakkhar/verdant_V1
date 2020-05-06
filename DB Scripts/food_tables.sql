@@ -6,10 +6,8 @@ PRIMARY KEY (CategoryId)
 
 CREATE TABLE IF NOT EXISTS FoodEmissions (
 EmissionsId INT NOT NULL,
-Foods VARCHAR(255) NULL,
+Foods VARCHAR(500) NULL,
 Emissions FLOAT NULL,
 CategoryId INT NULL,
-PRIMARY KEY (EmissionsId),
-FOREIGN KEY (CategoryId) REFERENCES FoodType(CategoryId)
+PRIMARY KEY (EmissionsId)
 );
-
