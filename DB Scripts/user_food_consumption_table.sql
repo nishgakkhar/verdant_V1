@@ -6,7 +6,10 @@ emission FLOAT NULL,
 categoryID INT,
 date_of_entry DATE NULL,
 quantity Float Null,
+Protein FLOAT NULL,
+Fat FLOAT NULL,
+Carbohydrate FLOAT NULL,
 PRIMARY KEY (ObjectID),
 FOREIGN KEY (CategoryId) REFERENCES FoodType(CategoryId),
-FOREIGN KEY (EmissionsId) REFERENCES FoodEmissions(EmissionsId)
+FOREIGN KEY (EmissionsId) REFERENCES food_information(EmissionsId)
 );

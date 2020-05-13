@@ -38,7 +38,7 @@ INSERT INTO FoodEmissions VALUES
 (31,'Spaghetti (canned)',0.6,4),
 (32,'Breakfast biscuits - Weetbix',0.17,4),
 (33,'Pop corn',0.17,4),
-(34,'Wheat germ',0.17,4),
+(34,'Wheat germ',0.17,1),
 (35,'Couscous',0.17,4),
 (36,'Dry peas',0.17,1),
 (37,'Chickpeas',0.17,1),
@@ -87,7 +87,11 @@ INSERT INTO FoodEmissions VALUES
 (80,'Tofu',0.08,4),
 (81,'Beef',10.3,3),
 (82,'Lamb',5.76,3),
-(83,'Fish_farmed',1.31,3),
+(83,'Fish',1.31,3),
 (84,'Pork',2.34,3),
 (85,'Chicken',1.7,3),
-(86,'Beans',0.05,1);
+(86,'Beans',0.05,1),
+(87,'Prawns',1.2,3),
+(88,'Wheat and Rye',0.14,2),
+(89,'Corn',0.1,2),
+(90,'Cassava',0.1,2);

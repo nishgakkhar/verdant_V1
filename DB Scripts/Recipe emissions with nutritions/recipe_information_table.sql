@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS recipe_information (
+RecipeID INT NOT NULL,
+RecipeName VARCHAR(255) NULL,
+Serves INT NULL,
+Details VARCHAR(255) NULL,
+VegetableEmissions FLOAT NULL,
+VegEmissionsPerServe FLOAT NULL,
+MeatEmissions FLOAT NULL,
+MeatEmissionsPerServe FLOAT NULL,
+FruitEmissions FLOAT NULL,
+FruitEmissionsPerServe FLOAT NULL,
+OtherEmissions FLOAT NULL,
+OtherEmissionsPerServe FLOAT NULL,
+RecipeTotalEmission FLOAT NULL,
+EmissionsPerServe FLOAT NULL,
+RecipeProteinPerServe FLOAT NULL,
+RecipeFatPerServe FLOAT NULL,
+RecipeCarbsPerServe FLOAT NULL,
+PRIMARY KEY (RecipeID)
+);
