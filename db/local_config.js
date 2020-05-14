@@ -6,7 +6,8 @@ var connection = mysql.createConnection({
     user: 'nish',
     password: 'login123',
     port:'3306',
-    database:'verdant'
+    database:'verdant',
+    multipleStatements: true
 });
 
 //exported- to be used outside this file
