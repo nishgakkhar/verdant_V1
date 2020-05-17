@@ -1,4 +1,4 @@
-var con = require('./db/local_config');
+var con = require('./db/ec2_config');
 var app = require('./server/port');
 var async = require("async");
 var _ = require('underscore');
