@@ -526,43 +526,107 @@ app.post("/api/add_recipe_emission", function(req, res) {
 app.get("/api/view_food_recommendations/:deviceID", function(req, res) {
     if (req && req.params && req.params.deviceID) {
         var idDevice = req.params.deviceID;
-        var sql = `select EmissionsId, MAX(round((emission/quantity),2)) as emissionVal, categoryID,Fat,Protein,Carbohydrate from user_food_consumption where deviceID = ?`;
+        var sql = `select EmissionsId, (emission/quantity) as val, categoryID,Fat,Protein,Carbohydrate from user_food_consumption where deviceID = ?  order by val desc limit 1`;
         con.query(sql, idDevice, function(err, rows) {
-            if (err) res.send(JSON.stringify("Query Failure"));
-            if(rows && rows.length){
-            console.log("It is rows" + JSON.stringify(rows));
-            var sqlCat = `select *  from food_information where Emissions < ? AND Fat > ?  AND Carbohydrate > ? AND Protein > ? AND CategoryId = ?`;
-            con.query(sqlCat, [rows[0].emissionVal, rows[0].Fat, rows[0].Carbs, rows[0].Protein, rows[0].categoryID], function(err, record) {
-                if (err) res.send(JSON.stringify("Query Failure"));
-                res.send(record);
-            });
+            if (err) {
+                res.send(JSON.stringify("Query Failureg"));
+                return;
             }
-            else console.log(JSON.stringify("deviceID Missing"));
+            if (rows && rows.length) {
+                var sqlCat = `select *  from food_information where Emissions < ? AND Fat > ?  AND Carbohydrate > ? AND Protein > ? AND CategoryId = ?`;
+                con.query(sqlCat, [rows[0].val, rows[0].Fat, rows[0].Carbs, rows[0].Protein, rows[0].categoryID], function(err, record) {
+                    if (err) {
+                        res.send(JSON.stringify("Query Failureu"));
+                        return;
+                    }
+                    if (record && record.length) {
+                        res.send(record);
+                        return;
+                    } else {
+                        var sqlCat = `select *  from food_information where Emissions < ? AND CategoryId = ? order by Emissions asc limit 10; `;
+                        con.query(sqlCat, [rows[0].val, rows[0].categoryID], function(err, recordset) {
+                            if (err) {
+                                res.send(JSON.stringify("Query Failure"));
+                                return;
+                            }
+                            res.send(recordset);
+                        });
+                    }
+                });
+            } else {
+                res.send(JSON.stringify("Query Failure"));
+                return;
+            }
         });
     } else {
         res.send(JSON.stringify("deviceID Missing"));
+        return;
     }
 });
 
-app.get("/api/view_recipe_recommendations/:deviceID", function(req, res) {
+app.get("/api/view_food_recommendations_newUser", function(req, res) {
+    var sql = `select *  from food_information order by Emissions asc limit 10;`;
+    con.query(sql, function(err, rows) {
+        if (err) {
+            res.send(JSON.stringify("Query Failure"));
+            return;
+        }
+        res.send(rows);
+    });
+});
+
+app.get("/api/view_recipe_recommendations_newUser", function(req, res) {
+    var sql = `select *  from recipe_information order by EmissionsPerServe asc limit 10;`;
+    con.query(sql, function(err, rows) {
+        if (err) {
+            res.send(JSON.stringify("Query Failure"));
+            return;
+        }
+        res.send(rows);
+    });
+});
+
+app.get("/api/view_recipe_recommendationss/:deviceID", function(req, res) {
     if (req && req.params && req.params.deviceID) {
         var idDevice = req.params.deviceID;
-        var sql = `select recipeID, MAX(round((totalEmission/serves),2)) as emissionVal, round((Protein/serves),2) as Protein, round((Carbohydrate/serves),2) as Carbs,round((Fat/serves),2) as Fat from user_recipe_consumption where deviceID = ?`;
+        var sql = `select recipeID, (totalEmission/serves) as emissionVal, round((Protein/serves),2) as Protein, round((Carbohydrate/serves),2) as Carbs,round((Fat/serves),2) as Fat from user_recipe_consumption where deviceID = ?`;
         con.query(sql, idDevice, function(err, rows) {
-            if (err) res.send(JSON.stringify("Query Failure"));
-            if(rows && rows.length){
-            var sqlCat = `select *  from recipe_information where RecipeFatPerServe > ? AND RecipeCarbsPerServe > ?  AND EmissionsPerServe < ? AND RecipeProteinPerServe > ? `;
-            con.query(sqlCat, [rows[0].Fat, rows[0].Carbs, rows[0].emissionVal, rows[0].Protein], function(err, record) {
-                if (err) res.send(JSON.stringify("Query Failure"));
-                res.send(record);
-            });
+            if (err) {
+                res.send(JSON.stringify("Query Failureg"));
+                return;
             }
-            else console.log(JSON.stringify("deviceID Missing"));
+            if (rows && rows.length) {
+                var sqlCat = `select *  from recipe_information where RecipeFatPerServe > ? AND RecipeCarbsPerServe > ?  AND EmissionsPerServe < ? AND RecipeProteinPerServe > ? `;
+                con.query(sqlCat, [rows[0].Fat, rows[0].Carbs, rows[0].emissionVal, rows[0].Protein], function(err, record) {
+                    if (err) {
+                        res.send(JSON.stringify("Query Failureu"));
+                        return;
+                    }
+                    if (record && record.length) {
+                        res.send(record);
+                        return;
+                    } else {
+                        var sqlCat = `select *  from recipe_information where EmissionsPerServe < ? order by EmissionsPerServe asc limit 10; `;
+                        con.query(sqlCat, rows[0].emissionVal, function(err, recordset) {
+                            if (err) {
+                                res.send(JSON.stringify("Query Failure"));
+                                return;
+                            }
+                            res.send(recordset);
+                        });
+                    }
+                });
+            } else {
+                res.send(JSON.stringify("Query Failure"));
+                return;
+            }
         });
     } else {
         res.send(JSON.stringify("deviceID Missing"));
+        return;
     }
 });
+
 
 function sqlQueryRun(sql, res) {
     con.query(sql, function(err, recordset) {
