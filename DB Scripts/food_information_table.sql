@@ -8,3 +8,9 @@ Fat FLOAT NULL,
 Carbohydrate FLOAT NULL,
 PRIMARY KEY(EmissionsId)
 );
+
+CREATE TABLE IF NOT EXISTS FoodType (
+CategoryId INT NOT NULL,
+CategoryName VARCHAR(255) NULL,
+PRIMARY KEY (CategoryId)
+);
