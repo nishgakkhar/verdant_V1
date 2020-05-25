@@ -1,4 +1,4 @@
-var con = require('./db/local_config');
+var con = require('./db/ec2_config');
 var app = require('./server/port');
 var _ = require('underscore');
 const bodyParser = require('body-parser');
@@ -15,61 +15,61 @@ app.get("/api/food_Carbon_Emission", function(req, res) {
     sqlQueryRun(sql, res);
 });
 
+//add food recommendations for users 
 app.get("/api/view_food_recommendations/:deviceID", function(req, res) {
-    var idDevice = req.params.deviceID;
-    async.parallel([getFood_information, getUser_foodInfo(idDevice)],
-        function(err, results) {
-            if (err) {
-                callback(err);
-                return;
-            } else if (results.length > 1) {
-                var userData = results[1].getUser_foodInfo;
-                var foodInfo = results[0].getFood_information;
-                console.log("Inside Foods by User****************************" + JSON.stringify(userData));
-                var arr = [];
-                for (var i = 0; i < userData.length; i++) {
-                    var count = 0;
-                    for (var j = 0; j < foodInfo.length; j++) {
-                        if (Math.round(userData[i].val) > foodInfo[j].Emissions && userData[i].EmissionsId != foodInfo[j].EmissionsId && userData[i].categoryID == foodInfo[j].CategoryId && Math.round(userData[i].Fat) < foodInfo[j].Fat && Math.round(userData[i].Protein) < foodInfo[j].Protein && Math.round(userData[i].Carbohydrate) < foodInfo[j].Carbohydrate) {
-                            if (count < 1) {
-                                var foodName = _.findWhere(foodInfo, {
-                                    EmissionsId: userData[i].EmissionsId
-                                });
-                                userData[i].Foods = foodName.Foods;
-                                arr.push({
-                                    "YourFood": userData[i].Foods,
-                                    "BetterFood": foodInfo[j].Foods
-                                });
-                                count++;
-                            }
-                        } else if (foodInfo[j].Emissions < (userData[i].val) && userData[i].EmissionsId != foodInfo[j].EmissionsId && userData[i].categoryID == foodInfo[j].CategoryId) {
-                            if (count < 1) {
-                                var foodName = _.findWhere(foodInfo, {
-                                    EmissionsId: userData[i].EmissionsId
-                                });
-                                userData[i].Foods = foodName.Foods;
-                                arr.push({
-                                    "YourFood": userData[i].Foods,
-                                    "BetterFood": foodInfo[j].Foods
-                                });
-                                count++;
+    if (req && req.params && req.params.deviceID) {
+        var idDevice = req.params.deviceID;
+        async.parallel([getFood_information, getUser_foodInfo(idDevice)],
+            function(err, results) {
+                if (err) {
+                    callback(err);
+                    return;
+                } else if (results.length > 1) {
+                    var userData = results[1].getUser_foodInfo;
+                    var foodInfo = results[0].getFood_information;
+                    console.log("Inside Foods by User****************************" + JSON.stringify(userData));
+                    var arr = [];
+                    for (var i = 0; i < userData.length; i++) {
+                        var count = 0;
+                        for (var j = 0; j < foodInfo.length; j++) {
+                            if (Math.round(userData[i].val) > foodInfo[j].Emissions && userData[i].EmissionsId != foodInfo[j].EmissionsId && userData[i].categoryID == foodInfo[j].CategoryId && Math.round(userData[i].Fat) < foodInfo[j].Fat && Math.round(userData[i].Protein) < foodInfo[j].Protein && Math.round(userData[i].Carbohydrate) < foodInfo[j].Carbohydrate) {
+                                if (count < 1) {
+                                    var foodName = _.findWhere(foodInfo, {
+                                        EmissionsId: userData[i].EmissionsId
+                                    });
+                                    userData[i].Foods = foodName.Foods;
+                                    arr.push({
+                                        "YourFood": userData[i].Foods,
+                                        "BetterFood": foodInfo[j].Foods
+                                    });
+                                    count++;
+                                }
+                            } else if (foodInfo[j].Emissions < (userData[i].val) && userData[i].EmissionsId != foodInfo[j].EmissionsId && userData[i].categoryID == foodInfo[j].CategoryId) {
+                                if (count < 1) {
+                                    var foodName = _.findWhere(foodInfo, {
+                                        EmissionsId: userData[i].EmissionsId
+                                    });
+                                    userData[i].Foods = foodName.Foods;
+                                    arr.push({
+                                        "YourFood": userData[i].Foods,
+                                        "BetterFood": foodInfo[j].Foods
+                                    });
+                                    count++;
+                                }
                             }
                         }
                     }
-                    if (arr == []) {
-                        arr.push({
-                            "YourFood": userData[i].Foods,
-                            "BetterFood": "You have done a great Job"
-                        });
-                    }
+                    res.send(arr);
+                    return;
+                } else {
+                    res.send(JSON.stringify("No Info"));
+                    return;
                 }
-                res.send(arr);
-                return;
-            } else {
-                res.send(JSON.stringify("No Info"));
-                return;
-            }
-        });
+            });
+    } else {
+        res.send(JSON.stringify("Missing parameters"));
+        return;
+    }
 });
 
 app.get("/api/view_recipe_recommendations/:deviceID", function(req, res) {
@@ -139,7 +139,7 @@ app.delete('/api/delete_recipe_food/:id', function(req, res) {
                 return;
             }
             console.log(JSON.stringify("Record Deleted"));
-            res.send(req.body);
+            res.send(JSON.parse('[{"RecipeName":"Record Deleted"}]'));
             return;
         });
     } else {
@@ -158,7 +158,7 @@ app.delete('/api/delete_raw_food/:id', function(req, res) {
                 return;
             }
             console.log(JSON.stringify("Record Deleted"));
-            res.send(req.body);
+            res.send(JSON.parse('[{"RecipeName":"Record Deleted"}]'));
             return;
         });
     } else {
@@ -404,7 +404,7 @@ app.get("/api/view_food_added/:deviceID", function(req, res) {
                     res.send(JSON.stringify(result));
                     return;
                 } else {
-                    res.send(JSON.stringify("Missing Body structure"));
+                    res.send(JSON.parse('[{"Foods":"No food found"}]'));
                     return;
                 }
             });
@@ -442,7 +442,7 @@ app.get("/api/view_recipe_added/:deviceID", function(req, res) {
                     res.send(JSON.stringify(result));
                     return;
                 } else {
-                    res.send(JSON.stringify("Missing Body structure"));
+                    res.send(JSON.parse('[{"Foods":"No recipe found"}]'));
                     return;
                 }
 
@@ -461,19 +461,9 @@ app.get("/api/weekly_report/:deviceID", function(req, res) {
         var sql = "select DAYNAME(date_of_entry) AS 'Date', round((sum(emission)),2) AS 'emission' FROM user_food_consumption WHERE deviceID = ? AND date_of_entry BETWEEN (NOW() - INTERVAL 7 DAY) AND NOW() GROUP BY date_of_entry ORDER BY DAYOFWEEK(date_of_entry); select DAYNAME(date_of_entry) AS 'Date', round((sum(totalEmission)),2) AS 'emission' FROM user_recipe_consumption WHERE deviceID = ? AND date_of_entry BETWEEN (NOW() - INTERVAL 7 DAY) AND NOW() GROUP BY date_of_entry ORDER BY DAYOFWEEK(date_of_entry); "
         con.query(sql, [idDevice, idDevice], function(err, result) {
             if (err) {
-                res.send(JSON.stringify("No data found"));
+                res.send(JSON.parse('[{"Foods":"No food found"}]'));
                 return;
             } else {
-                const sorter = {
-                    // "sunday": 0, // << if sunday is first day of week
-                    "monday": 1,
-                    "tuesday": 2,
-                    "wednesday": 3,
-                    "thursday": 4,
-                    "friday": 5,
-                    "saturday": 6,
-                    "sunday": 7
-                }
                 if (result && result.length) {
                     // _.flatten - To simplify the array
                     var flattenData = _.flatten(result);
@@ -558,19 +548,11 @@ app.get("/api/weekly_report/:deviceID", function(req, res) {
                         res.send("No data found");
                         return;
                     } else {
-                        var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-                        const ordered = [];
-                        Object.keys(bargraph).sort(function(a, b) {
-                            return days.indexOf(a) > days.indexOf(b);
-                        }).forEach(function(key) {
-                            ordered[key] = bargraph[key];
-                        });
-                        console.log(ordered);
-                        res.send(JSON.stringify(ordered));
+                        res.send(JSON.stringify(bargraph));
                         return;
                     }
                 } else {
-                    res.send("No data found");
+                    res.send(JSON.parse('[{"Foods":"No food found"}]'));
                     return;
                 }
 
