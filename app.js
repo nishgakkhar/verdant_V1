@@ -72,6 +72,7 @@ app.get("/api/view_food_recommendations/:deviceID", function(req, res) {
     }
 });
 
+//View food recommendations
 app.get("/api/view_recipe_recommendations/:deviceID", function(req, res) {
     var idDevice = req.params.deviceID;
     async.parallel([getRecipe_information, getUser_recipeInfo(idDevice)],
