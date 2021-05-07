@@ -28,7 +28,7 @@
     "mysql2": "^2.1.0",
     "node": "^13.12.0",
     "tedious": "^8.2.0",
-    "underscore": "^1.10.2"
+    "underscore": "^1.12.1"
   },
   "devDependencies": {}
 }
