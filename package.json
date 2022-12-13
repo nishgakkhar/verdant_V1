@@ -20,7 +20,7 @@
   "homepage": "https://github.com/nishthagakk/IE_VerdantU#readme",
   "dependencies": {
     "async": "^3.2.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "hapi": "^18.1.0",
     "md5": "^2.2.1",
     "mssql": "^6.2.0",
